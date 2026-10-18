@@ -54,6 +54,3 @@
 - Content Script + CSS 注入
 - MutationObserver 应对 B 站 SPA 动态加载
 
-## License
-
-MIT — 随便用，改完记得告诉我哪里还能更好。
