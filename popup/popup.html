@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <h1>B站进度时间隐藏</h1>
+  </header>
+  <main>
+    <label class="row">
+      <span>启用功能</span>
+      <input type="checkbox" id="enabled">
+    </label>
+    <label class="row">
+      <span>学习模式（隐藏选集/推荐时长）</span>
+      <input type="checkbox" id="learningMode">
+    </label>
+    <label class="row">
+      <span>隐藏整条进度条</span>
+      <input type="checkbox" id="hideProgressBar">
+    </label>
+    <label class="row">
+      <span>伪装时间（模糊文案）</span>
+      <input type="checkbox" id="fuzzyTime">
+    </label>
+  </main>
+  <footer>
+    快捷键 <kbd>Alt+T</kbd> 临时查看时间
+  </footer>
+  <script src="popup.js"></script>
+</body>
+</html>

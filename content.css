@@ -1,0 +1,80 @@
+/* ============================================================
+   B站进度时间隐藏 - 样式覆盖
+   通过 html 元素上的属性控制状态：
+   data-bth="on"            功能启用
+   data-bth-reveal="on"     临时显示时间（Alt+T）
+   data-bth-learning="on"   学习模式
+   data-bth-progress="on"   隐藏进度条
+   data-bth-fuzzy="on"      伪装时间
+   ============================================================ */
+
+/* 伪装时间占位元素 */
+.bth-fuzzy { display: inline-block; white-space: nowrap; }
+html[data-bth-reveal] .bth-fuzzy { display: none !important; }
+
+/* P0：隐藏播放器时间（当前/总时长）
+   新播放器 bpx + 旧播放器 squirtle，含 attribute 兜底选择器 */
+html[data-bth="on"]:not([data-bth-reveal]):not([data-bth-fuzzy="on"]) .bpx-player-ctrl-time,
+html[data-bth="on"]:not([data-bth-reveal]):not([data-bth-fuzzy="on"]) .bpx-player-ctrl-time-wrap,
+html[data-bth="on"]:not([data-bth-reveal]):not([data-bth-fuzzy="on"]) .bpx-player-ctrl-time-current,
+html[data-bth="on"]:not([data-bth-reveal]):not([data-bth-fuzzy="on"]) .bpx-player-ctrl-time-duration,
+html[data-bth="on"]:not([data-bth-reveal]):not([data-bth-fuzzy="on"]) .bpx-player-ctrl-time-separator,
+html[data-bth="on"]:not([data-bth-reveal]):not([data-bth-fuzzy="on"]) .bpx-player-ctrl-time-total,
+html[data-bth="on"]:not([data-bth-reveal]):not([data-bth-fuzzy="on"]) [class*="ctrl-time"],
+html[data-bth="on"]:not([data-bth-reveal]):not([data-bth-fuzzy="on"]) .bilibili-player-video-time,
+html[data-bth="on"]:not([data-bth-reveal]):not([data-bth-fuzzy="on"]) .bilibili-player-video-time-current,
+html[data-bth="on"]:not([data-bth-reveal]):not([data-bth-fuzzy="on"]) .bilibili-player-video-time-duration,
+html[data-bth="on"]:not([data-bth-reveal]):not([data-bth-fuzzy="on"]) .bilibili-player-video-time-divider,
+html[data-bth="on"]:not([data-bth-reveal]):not([data-bth-fuzzy="on"]) [class*="video-time"] {
+  display: none !important;
+}
+
+/* P2：伪装时间 —— 只隐藏数字部分，保留容器给模糊文案 */
+html[data-bth="on"][data-bth-fuzzy="on"]:not([data-bth-reveal]) .bpx-player-ctrl-time-current,
+html[data-bth="on"][data-bth-fuzzy="on"]:not([data-bth-reveal]) .bpx-player-ctrl-time-duration,
+html[data-bth="on"][data-bth-fuzzy="on"]:not([data-bth-reveal]) .bpx-player-ctrl-time-separator,
+html[data-bth="on"][data-bth-fuzzy="on"]:not([data-bth-reveal]) .bpx-player-ctrl-time-total,
+html[data-bth="on"][data-bth-fuzzy="on"]:not([data-bth-reveal]) .bilibili-player-video-time-current,
+html[data-bth="on"][data-bth-fuzzy="on"]:not([data-bth-reveal]) .bilibili-player-video-time-duration,
+html[data-bth="on"][data-bth-fuzzy="on"]:not([data-bth-reveal]) .bilibili-player-video-time-divider {
+  display: none !important;
+}
+
+/* P0：悬停进度条时出现的时间气泡 */
+html[data-bth="on"]:not([data-bth-reveal]) .bpx-player-progress-schedule-wrap,
+html[data-bth="on"]:not([data-bth-reveal]) .bpx-player-progress-tip,
+html[data-bth="on"]:not([data-bth-reveal]) .bpx-player-progress-schedule-tip,
+html[data-bth="on"]:not([data-bth-reveal]) [class*="progress-tip"],
+html[data-bth="on"]:not([data-bth-reveal]) [class*="schedule-tip"],
+html[data-bth="on"]:not([data-bth-reveal]) .bilibili-player-video-progress-detail,
+html[data-bth="on"]:not([data-bth-reveal]) .bilibili-player-video-progress-detail-time,
+html[data-bth="on"]:not([data-bth-reveal]) [class*="progress-detail"] {
+  display: none !important;
+}
+
+/* P1：学习模式 —— 隐藏选集/推荐/收藏等时长角标 */
+html[data-bth="on"][data-bth-learning="on"] .duration,
+html[data-bth="on"][data-bth-learning="on"] .bili-video-card__stats__duration,
+html[data-bth="on"][data-bth-learning="on"] .bili-video-card__info--duration,
+html[data-bth="on"][data-bth-learning="on"] [class*="video-card"] [class*="duration"],
+html[data-bth="on"][data-bth-learning="on"] .video-page-card-small .duration,
+html[data-bth="on"][data-bth-learning="on"] .video-page-recommend-list .duration,
+html[data-bth="on"][data-bth-learning="on"] .recommend-list .duration,
+html[data-bth="on"][data-bth-learning="on"] .rec-list .duration,
+html[data-bth="on"][data-bth-learning="on"] .multi-page-v2 .duration,
+html[data-bth="on"][data-bth-learning="on"] .video-pod__duration,
+html[data-bth="on"][data-bth-learning="on"] .part-list .duration {
+  display: none !important;
+}
+
+/* P2：隐藏整条进度条 */
+html[data-bth="on"][data-bth-progress="on"] .bpx-player-ctrl-progress,
+html[data-bth="on"][data-bth-progress="on"] .bpx-player-progress,
+html[data-bth="on"][data-bth-progress="on"] .bpx-player-progress-inner,
+html[data-bth="on"][data-bth-progress="on"] .bpx-player-progress-buffer,
+html[data-bth="on"][data-bth-progress="on"] [class*="ctrl-progress"],
+html[data-bth="on"][data-bth-progress="on"] .bilibili-player-video-progress,
+html[data-bth="on"][data-bth-progress="on"] .bilibili-player-video-control-progress,
+html[data-bth="on"][data-bth-progress="on"] [class*="video-progress"] {
+  display: none !important;
+}
